@@ -5,7 +5,7 @@ import React from "react";
 
 const Sidebar = () => {
   return (
-    <div className="w-96 bg-black border-r border-[#1B1B1A] h-screen p-4 flex flex-col gap-10">
+    <div className="w-80 bg-black border-r border-[#1B1B1A] h-screen p-4 flex flex-col gap-10 max-md:hidden">
       <div className="w-full h-14 flex gap-2 items-center">
         <div className="rounded-full overflow-hidden">
           <Image
@@ -28,12 +28,6 @@ const Sidebar = () => {
       <div className="bg--100 w-full h-full flex flex-col gap-2">
         <div className="bg-[#222323] p-2 rounded border border-gray-500 text-sm">
           <p>Explore</p>
-        </div>
-        <div className="p-2 rounded  text-sm">
-          <p>Example 3</p>
-        </div>
-        <div className="p-2 rounded  text-sm">
-          <p>Example 2</p>
         </div>
       </div>
     </div>
