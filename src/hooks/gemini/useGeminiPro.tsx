@@ -41,16 +41,19 @@ async function run({ query }: { query: string }): Promise<string> {
   ];
 
   const parts = [{ text: query }];
-
-  const result = await model.generateContent({
-    contents: [{ role: "user", parts }],
-    generationConfig,
-    safetySettings,
-  });
-
-  const response = result.response;
-  console.log("result: ", response);
-  return response.text();
+  try {
+    const result = await model.generateContent({
+      contents: [{ role: "user", parts }],
+      generationConfig,
+      safetySettings,
+    });
+    const response = result.response;
+    const res = response.text();
+    if (res) return res;
+    else throw new Error("no response");
+  } catch (error) {
+    return "Unable to generate response... The Google Gemini Pro has certain limitations!! Try a different query";
+  }
 }
 
 export default useGeminiPro;
