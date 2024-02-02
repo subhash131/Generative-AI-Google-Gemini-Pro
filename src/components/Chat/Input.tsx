@@ -1,7 +1,7 @@
 "use client";
 import { AIContext } from "@/context/StateContext";
 import { Image, SendHorizonal } from "lucide-react";
-import React, { useContext, useRef } from "react";
+import React, { useContext } from "react";
 import toast from "react-hot-toast";
 
 const Input = () => {
@@ -41,6 +41,7 @@ const Input = () => {
             e.key.toLowerCase() === "enter" &&
             context?.inputMessage.trim() !== ""
           ) {
+            e.preventDefault();
             handleSend();
           }
         }}
