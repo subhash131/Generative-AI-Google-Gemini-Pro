@@ -4,31 +4,24 @@ import Input from "./Input";
 import Conversation from "./Conversation";
 import SentMessage from "./SentMessage";
 import ReceivedMessage from "./ReceivedMessage";
-import StateContext, { AIContext } from "@/context/StateContext";
+import { AIContext } from "@/context/StateContext";
+import Typing from "./Typing.tsx";
 
 const Chat = () => {
   const context = useContext(AIContext);
-  // console.log("context: ", context?.messages);
 
   return (
     <div className="w-full h-screen flex flex-col">
       <Conversation>
         {context?.messages.map(({ message, sender }, index) => {
           return (
-            <>
-              {sender === "user" && (
-                <SentMessage key={`conversation-${index}`}>
-                  {message}
-                </SentMessage>
-              )}
-              {sender === "ai" && (
-                <ReceivedMessage key={`conversation-${index}`}>
-                  {message}
-                </ReceivedMessage>
-              )}
-            </>
+            <div key={`conversation-${index}`}>
+              {sender === "user" && <SentMessage>{message}</SentMessage>}
+              {sender === "ai" && <ReceivedMessage>{message}</ReceivedMessage>}
+            </div>
           );
         })}
+        {context?.isLoading && <Typing />}
       </Conversation>
       <Input />
     </div>
