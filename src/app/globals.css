@@ -24,4 +24,5 @@ input[type=file]::-webkit-file-upload-button {
 
 *::-webkit-scrollbar {
   display: none;
+  scroll-behavior: smooth;
 }
