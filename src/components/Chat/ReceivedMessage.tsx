@@ -1,5 +1,4 @@
 import React from "react";
-import Highlight from "react-highlight";
 
 const ReceivedMessage = ({ children }: { children: React.ReactNode }) => {
   return (
